@@ -1,0 +1,6155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
+
+<title>
+Before It Was Blue
+</title>
+
+<meta
+  name="description"
+  content="Hold the porcelain fragment and watch kiln heat bring out the cobalt blue."
+>
+
+<meta
+  name="theme-color"
+  content="#121822"
+>
+
+<meta
+  name="apple-mobile-web-app-capable"
+  content="yes"
+>
+
+<link
+  rel="icon"
+  href="/assets/logo.png"
+>
+
+
+<style>
+
+:root{
+
+  color-scheme:dark;
+
+  --bg:#121822;
+  --card:#1F2836;
+  --inset:#151C27;
+  --selected:#2E3A4D;
+
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.20);
+
+  --fg:#F1ECE2;
+  --fg2:#A9B2C0;
+  --muted:#6F7A8C;
+
+  --cobalt:#8FA8D6;
+  --ember:#E9B48A;
+  --heat:#D98159;
+
+  --ok:#79AE93;
+  --hot:#DE8E8E;
+
+  --porcelain:#EFE8DA;
+
+  --display:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+
+  --body:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+
+  --gut:
+    max(
+      20px,
+      env(
+        safe-area-inset-left,
+        0px
+      )
+    );
+
+  --gutr:
+    max(
+      20px,
+      env(
+        safe-area-inset-right,
+        0px
+      )
+    );
+}
+
+
+@media
+(min-width:900px){
+
+  :root{
+
+    --gut:
+      max(
+        48px,
+        env(
+          safe-area-inset-left,
+          0px
+        )
+      );
+
+    --gutr:
+      max(
+        48px,
+        env(
+          safe-area-inset-right,
+          0px
+        )
+      );
+  }
+}
+
+
+*{
+  box-sizing:border-box;
+}
+
+
+html,
+body{
+
+  height:100%;
+  margin:0;
+}
+
+
+body{
+
+  background:
+    var(--bg);
+
+  color:
+    var(--fg);
+
+  font-family:
+    var(--body);
+
+  font-size:
+    15px;
+
+  line-height:
+    1.5;
+
+  overflow:
+    hidden;
+
+  -webkit-tap-highlight-color:
+    transparent;
+
+  background-image:
+    radial-gradient(
+      70vmax 55vmax
+      at 25% 75%,
+      rgba(30,44,66,.6),
+      transparent 70%
+    );
+
+  padding-top:
+    env(
+      safe-area-inset-top,
+      0px
+    );
+
+  padding-bottom:
+    env(
+      safe-area-inset-bottom,
+      0px
+    );
+}
+
+
+[hidden]{
+  display:none!important;
+}
+
+
+img{
+  max-width:100%;
+}
+
+
+button{
+
+  font:inherit;
+
+  color:inherit;
+
+  background:none;
+
+  border:0;
+
+  padding:0;
+
+  cursor:pointer;
+}
+
+
+button:focus-visible{
+
+  outline:
+    2px solid
+    var(--cobalt);
+
+  outline-offset:
+    3px;
+}
+
+
+.app{
+
+  height:100%;
+
+  height:100dvh;
+
+  display:flex;
+
+  flex-direction:column;
+
+  max-width:1280px;
+
+  margin:
+    0 auto;
+}
+
+
+/* HEADER */
+
+.hdr{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+  margin-inline:
+    var(--gut)
+    var(--gutr);
+
+  padding-block:
+    18px 14px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+
+  flex:none;
+}
+
+
+.back{
+
+  width:40px;
+
+  height:40px;
+
+  border-radius:50%;
+
+  border:
+    1px solid
+    var(--line-strong);
+
+  display:grid;
+
+  place-items:center;
+}
+
+
+.brand{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  font:
+    500
+    12px/1
+    var(--body);
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+
+  white-space:
+    nowrap;
+}
+
+
+.brand img{
+
+  width:36px;
+
+  height:auto;
+}
+
+.sound{
+  margin-left:auto;
+  color:var(--fg2);
+  transition:color .2s,border-color .2s;
+}
+
+.sound .off{
+  display:none;
+}
+
+.sound[aria-pressed="false"] .on{
+  display:none;
+}
+
+.sound[aria-pressed="false"] .off{
+  display:inline;
+}
+
+.sound[aria-pressed="false"]{
+  color:var(--muted);
+}
+
+
+.icon{
+
+  width:20px;
+
+  height:20px;
+
+  flex:none;
+}
+
+
+main{
+
+  flex:1;
+
+  min-height:0;
+
+  position:relative;
+}
+
+
+.screen{
+
+  position:absolute;
+
+  inset:
+    0
+    var(--gutr)
+    0
+    var(--gut);
+
+  display:flex;
+}
+
+
+/* TYPE */
+
+.eyebrow{
+
+  font:
+    500
+    12px/1.3
+    var(--body);
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    var(--cobalt);
+}
+
+
+.h1{
+
+  font:
+    300
+    clamp(
+      30px,
+      4.4vw,
+      52px
+    )/1.12
+    var(--display);
+
+  letter-spacing:
+    -.025em;
+
+  margin:0;
+
+  text-wrap:
+    balance;
+}
+
+
+.h2{
+
+  font:
+    400
+    clamp(
+      26px,
+      3vw,
+      32px
+    )/1.2
+    var(--display);
+
+  letter-spacing:
+    -.015em;
+
+  margin:0;
+}
+
+
+.h3{
+
+  font:
+    400
+    22px/1.25
+    var(--display);
+
+  margin:0;
+}
+
+
+.body{
+
+  color:
+    var(--fg2);
+
+  margin:0;
+
+  max-width:
+    52ch;
+}
+
+
+.small{
+
+  font-size:
+    12.5px;
+
+  color:
+    var(--muted);
+}
+
+
+/* BUTTONS */
+
+.btn{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:10px;
+
+  height:52px;
+
+  padding:
+    0 24px;
+
+  border-radius:
+    12px;
+
+  font:
+    500
+    15px/1
+    var(--body);
+
+  transition:
+    transform .12s,
+    background .25s,
+    color .25s;
+}
+
+
+.btn:active{
+
+  transform:
+    scale(.98);
+}
+
+
+.btn.primary{
+
+  background:
+    var(--porcelain);
+
+  color:
+    var(--inset);
+}
+
+
+.btn.secondary{
+
+  border:
+    1px solid
+    var(--line-strong);
+}
+
+
+.btn.white{
+
+  background:
+    var(--porcelain);
+
+  color:
+    var(--inset);
+}
+
+
+.btn.sm{
+
+  height:44px;
+
+  padding:
+    0 18px;
+}
+
+
+.icon-btn{
+
+  width:48px;
+
+  height:48px;
+
+  border-radius:50%;
+
+  display:grid;
+
+  place-items:center;
+}
+
+
+.icon-btn.white{
+
+  background:
+    var(--porcelain);
+
+  color:
+    var(--inset);
+}
+
+
+.nudge .icon{
+
+  animation:
+    pump
+    1.35s
+    ease-in-out
+    infinite;
+}
+
+
+@keyframes pump{
+
+  0%,
+  40%,
+  100%{
+
+    transform:
+      translateX(0);
+  }
+
+  10%{
+
+    transform:
+      translateX(6px);
+  }
+
+  20%{
+
+    transform:
+      translateX(0);
+  }
+
+  30%{
+
+    transform:
+      translateX(6px);
+  }
+}
+
+
+/* PORCELAIN STAGE */
+
+.stage{
+
+  position:relative;
+
+  display:grid;
+
+  place-items:center;
+
+  min-height:0;
+
+  min-width:0;
+
+  touch-action:none;
+
+  -webkit-user-select:none;
+
+  user-select:none;
+
+  -webkit-touch-callout:none;
+}
+
+
+.art-box{
+
+  position:relative;
+}
+
+
+.art-shade{
+
+  position:absolute;
+
+  overflow:visible;
+
+  pointer-events:none;
+}
+
+
+.art-canvas{
+
+  position:absolute;
+
+  left:0;
+
+  top:0;
+
+  display:block;
+
+  pointer-events:none;
+}
+
+
+.touch-dot{
+
+  position:absolute;
+
+  width:0;
+
+  height:0;
+
+  pointer-events:none;
+
+  transition:
+    opacity .4s;
+
+  z-index:2;
+}
+
+
+.touch-dot i{
+
+  position:absolute;
+
+  left:0;
+
+  top:0;
+
+  border-radius:50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+}
+
+
+.touch-dot .halo{
+
+  width:72px;
+
+  height:72px;
+
+  background:
+    radial-gradient(
+      closest-side,
+      rgba(18,24,34,.42),
+      rgba(18,24,34,0)
+    );
+}
+
+
+.touch-dot .core{
+
+  width:16px;
+
+  height:16px;
+
+  background:
+    var(--heat);
+
+  border:
+    2px solid #fff;
+
+  box-shadow:
+    0 1px 6px
+    rgba(18,24,34,.6);
+
+  animation:
+    core
+    1.2s
+    ease-out
+    infinite;
+}
+
+
+.touch-dot .ring{
+
+  width:36px;
+
+  height:36px;
+
+  border:
+    2px solid
+    var(--ember);
+
+  background:
+    rgba(233,180,138,.2);
+}
+
+
+.touch-dot .wave{
+
+  width:36px;
+
+  height:36px;
+
+  border:
+    2px solid
+    rgba(233,180,138,.95);
+
+  background:
+    rgba(217,129,89,.16);
+
+  animation:
+    wave
+    1.2s
+    ease-out
+    infinite;
+}
+
+
+.touch-dot .wave.w2{
+
+  animation-delay:
+    .6s;
+}
+
+
+@keyframes wave{
+
+  from{
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(.9);
+
+    opacity:1;
+  }
+
+  to{
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(2.5);
+
+    opacity:0;
+  }
+}
+
+
+@keyframes core{
+
+  0%,
+  100%{
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(1);
+  }
+
+  35%{
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(1.18);
+  }
+}
+
+
+/* WELCOME */
+
+.welcome{
+
+  display:grid;
+
+  grid-template-rows:
+    auto
+    1fr
+    auto
+    auto;
+
+  gap:
+    20px;
+
+  padding-block:
+    24px 20px;
+}
+
+
+.welcome .intro{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:14px;
+}
+
+
+.welcome .intro .start-d{
+
+  display:none;
+}
+
+
+.steps{
+
+  display:grid;
+
+  gap:12px;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  padding-top:
+    16px;
+}
+
+
+.step{
+
+  display:flex;
+
+  gap:14px;
+
+  align-items:
+    baseline;
+}
+
+
+.step b{
+
+  font:
+    300
+    24px/1
+    var(--display);
+
+  color:
+    var(--fg2);
+}
+
+
+.step span{
+
+  font-weight:
+    500;
+}
+
+
+.welcome .start-m{
+
+  width:100%;
+}
+
+
+@media
+(min-width:900px)
+and
+(orientation:landscape){
+
+  .welcome{
+
+    grid-template-columns:
+      1fr
+      1fr;
+
+    grid-template-rows:
+      1fr
+      auto;
+
+    column-gap:
+      48px;
+  }
+
+  .welcome .intro{
+
+    justify-content:center;
+  }
+
+  .welcome .intro .start-d{
+
+    display:inline-flex;
+
+    align-self:
+      flex-start;
+  }
+
+  .welcome .stage{
+
+    grid-column:2;
+
+    grid-row:1;
+  }
+
+  .steps{
+
+    grid-column:
+      1/-1;
+
+    display:flex;
+
+    justify-content:
+      space-between;
+  }
+
+  .welcome .start-m{
+
+    display:none;
+  }
+}
+
+
+/* FIRING / COMPLETE */
+
+.firing,
+.complete{
+
+  display:grid;
+
+  gap:14px;
+
+  padding-block:
+    18px 0;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    );
+
+  grid-template-rows:
+    auto
+    auto
+    minmax(
+      0,
+      1fr
+    )
+    auto
+    auto;
+
+  grid-template-areas:
+    "title"
+    "controls"
+    "stage"
+    "feedback"
+    "panel";
+}
+
+
+.complete{
+
+  grid-template-areas:
+    "title"
+    "controls"
+    "stage"
+    "panel"
+    "panel";
+}
+
+
+.f-title{
+
+  grid-area:title;
+}
+
+
+.f-controls{
+
+  grid-area:controls;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  gap:12px;
+}
+
+
+.firing .stage,
+.complete .stage{
+
+  grid-area:stage;
+}
+
+
+.feedback{
+
+  grid-area:
+    feedback;
+
+  min-height:
+    52px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+
+.panel{
+
+  grid-area:panel;
+
+  background:
+    var(--card);
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:
+    22px 22px 0 0;
+
+  padding:
+    18px
+    20px
+    calc(
+      20px
+      +
+      env(
+        safe-area-inset-bottom,
+        0px
+      )
+    );
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:16px;
+
+  box-shadow:
+    0 -8px 32px
+    rgba(0,0,0,.35);
+}
+
+
+.p-head{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  gap:10px;
+}
+
+
+.seg{
+
+  display:inline-flex;
+
+  padding:5px;
+
+  gap:4px;
+
+  border:
+    1px solid
+    var(--line-strong);
+
+  border-radius:
+    12px;
+}
+
+
+.seg button{
+
+  padding:
+    10px 20px;
+
+  border-radius:
+    8px;
+
+  color:
+    var(--fg2);
+
+  font-weight:
+    500;
+
+  font-size:
+    14.5px;
+}
+
+
+.seg button[aria-pressed="true"]{
+
+  background:
+    var(--selected);
+
+  color:
+    var(--fg);
+}
+
+
+.reset-side{
+
+  display:none;
+}
+
+
+.pill{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  padding:
+    8px 20px;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(31,40,54,.92);
+
+  border:
+    1px solid
+    var(--line);
+
+  font-size:
+    18px;
+
+  color:
+    var(--fg2);
+}
+
+
+.status{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  padding:
+    6px 12px;
+
+  border-radius:
+    999px;
+
+  font-size:
+    13px;
+
+  background:
+    rgba(111,122,140,.16);
+}
+
+
+.status .dot{
+
+  width:7px;
+
+  height:7px;
+
+  border-radius:50%;
+
+  background:
+    var(--muted);
+}
+
+
+.status[data-s="ideal"] .dot{
+
+  background:
+    var(--ok);
+}
+
+
+.status[data-s="over"] .dot{
+
+  background:
+    var(--hot);
+}
+
+
+.status[data-s="done"] .dot{
+
+  background:
+    var(--cobalt);
+}
+
+
+.temp{
+
+  display:flex;
+
+  align-items:
+    baseline;
+
+  gap:6px;
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+
+.temp .num{
+
+  font:
+    200
+    clamp(
+      52px,
+      7vw,
+      64px
+    )/1
+    var(--display);
+}
+
+
+.temp .unit{
+
+  font-size:
+    18px;
+
+  color:
+    var(--fg2);
+}
+
+
+.t-cap{
+
+  font-size:
+    12.5px;
+
+  color:
+    var(--fg2);
+}
+
+
+.thermo{
+
+  position:relative;
+
+  height:46px;
+}
+
+
+.thermo .track{
+
+  position:absolute;
+
+  left:0;
+
+  right:0;
+
+  top:9px;
+
+  height:12px;
+
+  border-radius:
+    6px;
+
+  background:
+    var(--inset);
+
+  border:
+    1px solid
+    var(--line);
+}
+
+
+.thermo .toohot{
+
+  position:absolute;
+
+  top:9px;
+
+  height:12px;
+
+  right:0;
+
+  left:
+    var(--hl);
+
+  background:
+    rgba(233,180,138,.3);
+}
+
+
+.thermo .fill{
+
+  position:absolute;
+
+  left:0;
+
+  top:9px;
+
+  height:12px;
+
+  width:
+    max(
+      12px,
+      var(--fillw)
+    );
+
+  border-radius:
+    6px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--cobalt),
+      var(--ember)
+    );
+}
+
+
+.thermo .window{
+
+  position:absolute;
+
+  top:4px;
+
+  height:22px;
+
+  left:
+    var(--wl);
+
+  width:
+    var(--ww);
+
+  border:
+    2.5px solid
+    var(--ember);
+
+  border-radius:
+    6px;
+}
+
+
+.thermo .marker{
+
+  position:absolute;
+
+  top:1px;
+
+  left:
+    var(--fillw);
+
+  width:3px;
+
+  height:28px;
+
+  background:
+    var(--ember);
+
+  transform:
+    translateX(
+      -50%
+    );
+}
+
+
+.thermo .lbl{
+
+  position:absolute;
+
+  top:30px;
+
+  font-size:
+    12px;
+
+  color:
+    var(--fg2);
+}
+
+
+.thermo .lbl.ref{
+
+  right:0;
+
+  color:
+    var(--ember);
+}
+
+
+.thermo .ticks,
+.thermo .refbox{
+
+  display:none;
+}
+
+
+.guidance{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  font-weight:
+    500;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  padding-top:
+    14px;
+}
+
+
+.wear{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  padding:
+    12px 14px;
+
+  border-radius:
+    12px;
+
+  background:
+    var(--inset);
+
+  border:
+    1px solid
+    var(--line);
+}
+
+
+.wear .ic{
+
+  width:36px;
+
+  height:36px;
+
+  border-radius:50%;
+
+  display:grid;
+
+  place-items:center;
+
+  background:
+    rgba(233,180,138,.12);
+
+  color:
+    var(--ember);
+}
+
+
+.wear .t{
+
+  flex:1;
+
+  min-width:0;
+}
+
+
+.wear .k{
+
+  font-size:
+    11px;
+
+  letter-spacing:
+    .16em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    var(--muted);
+}
+
+
+.bars{
+
+  display:flex;
+
+  gap:3px;
+
+  align-items:
+    flex-end;
+}
+
+
+.bars i{
+
+  width:5px;
+
+  border-radius:
+    2px;
+
+  background:
+    var(--line-strong);
+}
+
+
+.bars i:nth-child(1){
+
+  height:8px;
+}
+
+
+.bars i:nth-child(2){
+
+  height:13px;
+}
+
+
+.bars i:nth-child(3){
+
+  height:18px;
+}
+
+
+.bars i.on{
+
+  background:
+    var(--ember);
+}
+
+
+.grow{
+
+  flex:1;
+}
+
+
+.complete-result{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:12px;
+  background:rgba(121,174,147,.12);
+  border:1px solid rgba(121,174,147,.18);
+}
+
+.complete-result .check{
+  color:var(--ok);
+  font-size:20px;
+  line-height:1.1;
+}
+
+.complete-result .result-copy{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.complete-result strong{
+  font-size:15px;
+  font-weight:600;
+}
+
+.complete-result .result-sub{
+  font-size:13px;
+  color:var(--fg2);
+}
+
+.complete-result[data-s="under"]{
+  background:rgba(143,168,214,.10);
+  border-color:rgba(143,168,214,.18);
+}
+.complete-result[data-s="under"] .check{color:var(--cobalt);}
+.complete-result[data-s="over"]{
+  background:rgba(222,142,142,.10);
+  border-color:rgba(222,142,142,.18);
+}
+.complete-result[data-s="over"] .check{color:var(--hot);}
+
+
+@media
+not all
+and
+(min-width:900px)
+and
+(orientation:landscape){
+
+  .screen{
+
+    overflow-x:hidden;
+
+    overflow-y:auto;
+
+    -webkit-overflow-scrolling:
+      touch;
+  }
+
+  .firing,
+  .complete{
+
+    grid-template-rows:
+      auto
+      auto
+      auto
+      auto
+      auto;
+
+    padding-bottom:
+      20px;
+  }
+
+  .firing .stage,
+  .complete .stage{
+
+    height:
+      clamp(
+        300px,
+        min(
+          96vw,
+          58vh
+        ),
+        560px
+      );
+  }
+
+  .welcome{
+
+    grid-template-rows:
+      auto
+      clamp(
+        260px,
+        min(
+          90vw,
+          50vh
+        ),
+        520px
+      )
+      auto
+      auto;
+  }
+
+  .panel{
+
+    border-radius:
+      22px;
+  }
+}
+
+
+@media
+(min-width:900px)
+and
+(orientation:landscape){
+
+  .firing,
+  .complete{
+
+    grid-template-columns:
+      360px
+      minmax(
+        0,
+        1fr
+      );
+
+    grid-template-rows:
+      auto
+      auto
+      minmax(
+        0,
+        1fr
+      );
+
+    column-gap:
+      48px;
+
+    grid-template-areas:
+      "panel title"
+      "panel controls"
+      "panel stage";
+  }
+
+
+  .panel{
+
+    border-radius:
+      20px;
+
+    padding:
+      24px 28px;
+
+    box-shadow:none;
+  }
+
+
+  .firing .reset-top{
+
+    display:none;
+  }
+
+
+  .reset-side{
+
+    display:flex;
+  }
+
+
+  .firing .feedback{
+
+    grid-area:
+      controls;
+
+    justify-self:
+      end;
+  }
+
+
+  .thermo{
+
+    height:auto;
+
+    flex:1;
+
+    min-height:
+      180px;
+
+    max-height:
+      300px;
+  }
+
+
+  .thermo .track{
+
+    left:60px;
+
+    right:auto;
+
+    top:10px;
+
+    bottom:10px;
+
+    width:14px;
+
+    height:auto;
+  }
+
+
+  .thermo .toohot{
+
+    left:60px;
+
+    right:auto;
+
+    top:10px;
+
+    width:14px;
+
+    height:
+      var(--toohot);
+  }
+
+
+  .thermo .fill{
+
+    left:60px;
+
+    top:auto;
+
+    bottom:10px;
+
+    width:14px;
+
+    height:
+      max(
+        14px,
+        var(--fillh)
+      );
+
+    background:
+      linear-gradient(
+        0deg,
+        var(--cobalt),
+        var(--ember)
+      );
+  }
+
+
+  .thermo .window{
+
+    left:55px;
+
+    top:
+      var(--wtop);
+
+    width:24px;
+
+    height:
+      var(--wh);
+  }
+
+
+  .thermo .marker{
+
+    left:67px;
+
+    top:auto;
+
+    bottom:
+      calc(
+        10px
+        +
+        var(--fillh)
+        -
+        1.5px
+      );
+
+    width:38px;
+
+    height:3px;
+  }
+
+
+  .thermo .ticks{
+
+    display:block;
+
+    position:absolute;
+
+    left:0;
+
+    top:10px;
+
+    bottom:10px;
+
+    width:52px;
+  }
+
+
+  .thermo .ticks span{
+
+    position:absolute;
+
+    right:0;
+
+    font-size:
+      12px;
+
+    color:
+      var(--fg2);
+  }
+
+
+  .thermo .refbox{
+
+    display:block;
+
+    position:absolute;
+
+    left:96px;
+
+    top:
+      calc(
+        var(--wtop)
+        -
+        8px
+      );
+  }
+
+
+  .thermo .refbox b{
+
+    display:block;
+
+    color:
+      var(--ember);
+  }
+
+
+  .thermo .refbox span{
+
+    font-size:
+      12.5px;
+
+    color:
+      var(--fg2);
+  }
+
+
+  .thermo .lbl{
+
+    display:none;
+  }
+}
+
+
+/* REVEAL */
+
+.reveal{
+
+  flex-direction:
+    column;
+
+  gap:20px;
+
+  padding-block:
+    24px;
+
+  overflow:auto;
+}
+
+
+.cards{
+
+  display:grid;
+
+  gap:12px;
+}
+
+
+.card{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:16px;
+
+  padding:
+    14px 16px;
+
+  border-radius:
+    18px;
+
+  background:
+    var(--card);
+
+  border:
+    1px solid
+    var(--line);
+
+  text-align:left;
+}
+
+
+.card img{
+
+  width:96px;
+
+  height:96px;
+
+  border-radius:50%;
+
+  flex:none;
+}
+
+
+.card .k{
+
+  font-size:
+    11px;
+
+  letter-spacing:
+    .16em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    var(--muted);
+}
+
+
+.card .t{
+
+  display:flex;
+
+  flex-direction:
+    column;
+
+  gap:4px;
+}
+
+
+.card p{
+
+  margin:0;
+
+  color:
+    var(--fg2);
+
+  font-size:
+    14px;
+}
+
+.card[aria-pressed="true"]{
+  border-color:var(--line-strong);
+}
+
+.card[aria-pressed="true"][data-k="under"]{
+  border-color:var(--cobalt);
+}
+
+.card[aria-pressed="true"][data-k="ideal"]{
+  border-color:var(--ok);
+}
+
+.card[aria-pressed="true"][data-k="over"]{
+  border-color:var(--ember);
+}
+
+.card[aria-pressed="true"][data-k="under"] .k{
+  color:var(--cobalt);
+}
+
+.card[aria-pressed="true"][data-k="ideal"] .k{
+  color:var(--ok);
+}
+
+.card[aria-pressed="true"][data-k="over"] .k{
+  color:var(--ember);
+}
+
+
+.reveal .actions{
+
+  display:flex;
+
+  flex-direction:
+    column;
+
+  gap:10px;
+}
+
+
+.reveal .note{
+
+  display:none;
+}
+
+@media (min-width:900px) and (orientation:landscape){
+  .reveal{
+    display:grid;
+    grid-template-columns:1fr auto;
+    grid-template-rows:auto minmax(0,1fr) auto;
+    grid-template-areas:
+      "title title"
+      "cards cards"
+      "actions note";
+    gap:24px;
+    padding-block:64px 28px;
+    overflow:hidden;
+  }
+  .reveal > .h1{grid-area:title;}
+  .reveal .cards{
+    grid-area:cards;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:24px;
+    min-height:0;
+  }
+  .reveal .card{
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    gap:18px;
+    padding:28px 24px;
+  }
+  .reveal .card img{
+    width:min(190px,68%);
+    height:auto;
+    aspect-ratio:1;
+    align-self:center;
+  }
+  .reveal .card .t{margin-top:auto;}
+  .reveal .actions{
+    grid-area:actions;
+    flex-direction:row;
+    align-items:center;
+  }
+  .reveal .actions .secondary{order:1;}
+  .reveal .actions .primary{order:2;}
+  .reveal .note{
+    display:block;
+    grid-area:note;
+    align-self:center;
+    justify-self:end;
+    margin:0;
+    color:var(--muted);
+    font-size:12.5px;
+  }
+}
+
+/* TAKEAWAY */
+
+.takeaway{
+
+  display:grid;
+
+  gap:20px;
+
+  padding-block:
+    24px;
+
+  grid-template-rows:
+    minmax(
+      160px,
+      1fr
+    )
+    auto;
+
+  align-items:center;
+}
+
+
+.takeaway .stage{
+
+  align-self:
+    stretch;
+
+  min-height:
+    240px;
+}
+
+
+.takeaway .copy{
+
+  display:flex;
+
+  flex-direction:
+    column;
+
+  gap:16px;
+}
+
+
+.key{
+
+  padding:
+    16px 20px;
+
+  border-radius:
+    14px;
+
+  background:
+    var(--inset);
+
+  border:
+    1px solid
+    var(--line);
+}
+
+
+.key .k{
+
+  font-size:
+    11px;
+
+  letter-spacing:
+    .16em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    var(--ember);
+
+  margin-bottom:
+    6px;
+}
+
+
+.key p{
+
+  margin:0;
+
+  font-size:
+    20px;
+}
+
+@media (min-width:900px) and (orientation:landscape){
+  .takeaway{
+    grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);
+    grid-template-rows:1fr;
+    column-gap:72px;
+    padding-block:42px 40px;
+    align-items:center;
+  }
+  .takeaway .stage{
+    grid-column:1;
+    grid-row:1;
+    min-height:0;
+    height:100%;
+  }
+  .takeaway .copy{
+    grid-column:2;
+    grid-row:1;
+    justify-content:center;
+    max-width:520px;
+  }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<header class="hdr">
+
+<button
+  class="back"
+  id="backBtn"
+  aria-label="Back"
+  hidden
+>
+←
+</button>
+
+
+<button
+  class="brand"
+  id="home"
+>
+
+<img
+  src="/assets/logo.png"
+  alt=""
+>
+
+BEFORE IT WAS BLUE
+
+</button>
+
+<button
+  class="back sound"
+  id="soundBtn"
+  type="button"
+  aria-pressed="true"
+  aria-label="Sound on"
+>
+<svg
+  class="icon"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/>
+<path class="on" d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/>
+<path class="off" d="M16 9.5l5 5M21 9.5l-5 5"/>
+</svg>
+</button>
+
+</header>
+
+
+<main>
+
+
+<!-- WELCOME -->
+
+<section
+  class="screen welcome"
+  id="s-welcome"
+>
+
+
+<div class="intro">
+
+<h1 class="h1">
+
+Discover how kiln temperature shapes porcelain's blue.
+
+</h1>
+
+
+<p
+  class="body"
+  style="font-size:17px"
+>
+
+Touch, feel the warmth, and see the changes.
+
+</p>
+
+
+<button
+  class="btn primary nudge start-d"
+  data-go="firing"
+>
+
+Start exploring →
+
+</button>
+
+</div>
+
+
+<div
+  class="stage"
+  data-art="raw"
+  data-mode="fragment"
+></div>
+
+
+<div class="steps">
+
+<div class="step">
+<b>01</b>
+<span>Touch the Pattern</span>
+</div>
+
+<div class="step">
+<b>02</b>
+<span>Feel the Heat, Watch It Change</span>
+</div>
+
+<div class="step">
+<b>03</b>
+<span>Think Like a Craftsman</span>
+</div>
+
+</div>
+
+
+<button
+  class="btn primary nudge start-m"
+  data-go="firing"
+>
+
+Start exploring →
+
+</button>
+
+
+</section>
+
+
+<!-- FIRING -->
+
+<section
+  class="screen firing"
+  id="s-firing"
+  hidden
+>
+
+
+<h2
+  class="h2 f-title"
+>
+
+Let the blue emerge
+
+</h2>
+
+
+<div class="f-controls">
+
+
+<div class="seg">
+
+<button
+  aria-pressed="true"
+  data-view="fragment"
+>
+Fragment
+</button>
+
+
+<button
+  aria-pressed="false"
+  data-view="plate"
+>
+Full plate
+</button>
+
+</div>
+
+
+<button
+  class="icon-btn reset-top"
+  id="resetTop"
+>
+↻
+</button>
+
+
+</div>
+
+
+<div
+  class="stage"
+  id="fireStage"
+  data-mode="fragment"
+></div>
+
+
+<div
+  class="feedback"
+  id="feedback"
+></div>
+
+
+<aside class="panel">
+
+
+<div class="p-head">
+
+<span class="eyebrow">
+Current status
+</span>
+
+
+<span
+  class="status"
+  id="status"
+  data-s="ready"
+>
+
+<span class="dot"></span>
+
+<span id="statusTxt">
+Ready to begin
+</span>
+
+</span>
+
+</div>
+
+
+<div>
+
+<div class="temp">
+
+<span
+  class="num"
+  id="tempNum"
+>
+25
+</span>
+
+<span class="unit">
+°C
+</span>
+
+</div>
+
+
+<div class="t-cap">
+
+Simulated temperature
+
+</div>
+
+</div>
+
+
+<div
+  class="thermo"
+  id="thermo"
+>
+
+
+<div class="ticks">
+
+<span style="bottom:100%">
+1400
+</span>
+
+<span style="bottom:56.36%">
+800
+</span>
+
+<span style="bottom:27.27%">
+400
+</span>
+
+<span style="bottom:0">
+25
+</span>
+
+</div>
+
+
+<div class="track"></div>
+
+<div class="toohot"></div>
+
+<div class="fill"></div>
+
+<div class="window"></div>
+
+<div
+  class="marker"
+  id="marker"
+></div>
+
+
+<div class="refbox">
+
+<b>
+≈ 1300 °C
+</b>
+
+<span>
+Reference firing temperature
+</span>
+
+</div>
+
+
+<span class="lbl">
+25 °C
+</span>
+
+<span class="lbl ref">
+≈ 1300 °C reference
+</span>
+
+
+</div>
+
+
+<div
+  class="guidance"
+  id="guidance"
+></div>
+
+
+<div class="grow"></div>
+
+
+<div class="wear">
+
+
+<span class="ic">
+◎
+</span>
+
+
+<span class="t">
+
+<div
+  class="k"
+  id="wearK"
+>
+Wearable connected
+</div>
+
+
+<div id="wearV">
+
+Unfired cobalt
+
+</div>
+
+</span>
+
+
+<span
+  class="bars"
+  id="bars"
+>
+
+<i></i>
+<i></i>
+<i></i>
+
+</span>
+
+
+</div>
+
+
+<button
+  class="btn secondary reset-side"
+  id="resetSide"
+>
+
+Reset ↻
+
+</button>
+
+
+</aside>
+
+
+</section>
+
+
+<!-- COMPLETE -->
+
+<section
+  class="screen complete"
+  id="s-complete"
+  hidden
+>
+
+
+<h2 class="h2 f-title">
+
+The blue has emerged
+
+</h2>
+
+
+<div class="f-controls">
+
+<div class="seg">
+
+<button
+  aria-pressed="true"
+  data-view="fragment"
+>
+Fragment
+</button>
+
+<button
+  aria-pressed="false"
+  data-view="plate"
+>
+Full plate
+</button>
+
+</div>
+
+</div>
+
+
+<div
+  class="stage"
+  id="doneStage"
+  data-mode="fragment"
+></div>
+
+
+<aside class="panel">
+
+
+<div class="p-head">
+
+<span class="eyebrow">
+Current status
+</span>
+
+<span
+  class="status"
+  data-s="done"
+>
+
+<span class="dot"></span>
+
+Firing Done
+
+</span>
+
+</div>
+
+
+<div>
+
+<div class="small">
+
+You released at
+
+</div>
+
+
+<div class="temp">
+
+<span
+  class="num"
+  id="cTemp"
+>
+1296
+</span>
+
+<span class="unit">
+°C
+</span>
+
+</div>
+
+</div>
+
+<div class="complete-result" id="completeResult" data-s="ideal">
+  <span class="check" id="completeResultIcon">✓</span>
+  <div class="result-copy">
+    <strong id="completeResultTitle">Suitable firing</strong>
+    <span class="result-sub" id="completeResultSub">Inside the ≈1300 °C window</span>
+  </div>
+</div>
+
+<div class="grow"></div>
+
+
+<button
+  class="btn primary"
+  data-go="reveal"
+>
+
+See what the fire did →
+
+</button>
+
+
+</aside>
+
+
+</section>
+
+
+<!-- REVEAL -->
+
+<section
+  class="screen reveal"
+  id="s-reveal"
+  hidden
+>
+
+
+<h2 class="h1">
+
+Different Heat,
+Different Blues
+
+</h2>
+
+
+<div class="cards">
+
+
+<button class="card" data-k="under" aria-pressed="false">
+
+<img
+  src="/assets/plate-under.webp"
+>
+
+<span class="t">
+
+<span class="k">
+Dull, greyish blue
+</span>
+
+<span class="h3">
+Underfired
+</span>
+
+<p>
+The blue never fully develops.
+</p>
+
+</span>
+
+</button>
+
+
+<button class="card" data-k="ideal" aria-pressed="true">
+
+<img
+  src="/assets/plate-ideal.webp"
+>
+
+<span class="t">
+
+<span class="k">
+Vivid, bright blue
+</span>
+
+<span class="h3">
+Ideal Firing
+</span>
+
+<p>
+The blue fully develops.
+</p>
+
+</span>
+
+</button>
+
+
+<button class="card" data-k="over" aria-pressed="false">
+
+<img
+  src="/assets/plate-over.webp"
+>
+
+<span class="t">
+
+<span class="k">
+Muted, purplish blue
+</span>
+
+<span class="h3">
+Overfired
+</span>
+
+<p>
+Excessive heat causes the blue to lose clarity.
+</p>
+
+</span>
+
+</button>
+
+
+</div>
+
+
+<div class="actions">
+
+
+<button
+  class="btn primary"
+  data-go="takeaway"
+>
+
+Final Takeaway →
+
+</button>
+
+
+<button
+  class="btn secondary"
+  data-go="firing"
+>
+
+Start again ↻
+
+</button>
+
+
+</div>
+
+<p class="note">Temperatures are simulated; ≈1300 °C is the literature reference.</p>
+
+</section>
+
+
+<!-- TAKEAWAY -->
+
+<section
+  class="screen takeaway"
+  id="s-takeaway"
+  hidden
+>
+
+
+<div
+  class="stage"
+  data-art="ideal"
+  data-mode="plate"
+></div>
+
+
+<div class="copy">
+
+
+<h2 class="h2">
+
+Behind every blue was a craftsperson's knowledge.
+
+</h2>
+
+
+<p class="body">
+
+Their blue patterns reveal how firing temperature shaped the final color.
+
+</p>
+
+
+<div class="key">
+
+<div class="k">
+Key takeaway
+</div>
+
+<p>
+
+More heat doesn’t always mean better porcelain. 
+Knowing how to control the heat was part of the craft.
+
+</p>
+
+</div>
+
+
+<button
+  class="btn primary"
+  data-go="firing"
+>
+
+Start again ↻
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<script>
+
+(()=>{
+
+
+// ============================================================
+// IMAGE PATHS
+// ============================================================
+
+const IMG = {
+
+  raw:
+    '/assets/plate-raw.webp',
+
+  under:
+    '/assets/plate-under.webp',
+
+  ideal:
+    '/assets/plate-ideal.webp',
+
+  over:
+    '/assets/plate-over.webp'
+
+};
+
+
+// ============================================================
+// GEOMETRY
+// ============================================================
+
+const POLY = [
+
+  [175,330],
+  [330,215],
+  [560,165],
+  [780,180],
+  [985,205],
+  [1090,330],
+  [1120,470],
+  [1075,640],
+  [1060,860],
+  [1065,1000],
+  [990,1080],
+  [770,1110],
+  [560,1120],
+  [400,1080],
+  [300,960],
+  [250,820],
+  [190,640],
+  [160,470]
+
+];
+
+
+const SRC = 1254;
+
+const BX = 160;
+
+const BY = 165;
+
+const BW = 960;
+
+const BH = 955;
+
+
+const ORIGIN = {
+
+  x:
+    BX
+    +
+    0.62 * BW,
+
+  y:
+    BY
+    +
+    0.40 * BH
+
+};
+
+
+// ============================================================
+// TEMPERATURE
+// ============================================================
+
+const TEMPS = [
+
+  25,
+  280,
+  520,
+  760,
+  980,
+  1160,
+  1296,
+  1345,
+  1388
+
+];
+
+
+const WIN = [
+
+  1260,
+  1340
+
+];
+
+
+const TBL = [
+
+  [0,0,0,0],
+
+  [.5,0,0,0],
+
+  [.95,.12,.25,0],
+
+  [1.45,.3,.4,0],
+
+  [1.45,.55,.55,0],
+
+  [1.45,.85,.75,0],
+
+  [1.45,1.45,1,0],
+
+  [1.45,1.45,1,.4],
+
+  [1.45,1.45,1,1.45]
+
+];
+
+
+const FIRE_SECONDS = 30;
+
+
+const $ =
+  selector =>
+    document.querySelector(
+      selector
+    );
+
+
+const $$ =
+  selector =>
+    document.querySelectorAll(
+      selector
+    );
+
+
+// ============================================================
+// IMAGES
+// ============================================================
+
+const IMGS = {};
+
+
+for (
+  const key
+  in IMG
+) {
+
+  const image =
+    new Image();
+
+
+  image.decoding =
+    'async';
+
+
+  image.onload =
+    async () => {
+
+      try {
+
+        if (
+          image.decode
+        ) {
+
+          await image.decode();
+        }
+
+      } catch (_) {}
+
+
+      document
+        .querySelectorAll(
+          '.stage'
+        )
+        .forEach(
+          element => {
+
+            if (
+              element._S
+            ) {
+
+              draw(
+                element._S
+              );
+            }
+          }
+        );
+    };
+
+
+  image.onerror =
+    () => {
+
+      console.log(
+        'Image failed:',
+        IMG[key]
+      );
+    };
+
+
+  image.src =
+    IMG[key];
+
+
+  IMGS[key] =
+    image;
+}
+
+
+// ============================================================
+// STAGE
+// ============================================================
+
+function buildStage(
+  element,
+  {
+    layers = ['raw'],
+    dot = false
+  }
+) {
+
+  element.innerHTML =
+    '';
+
+
+  const box =
+    document.createElement(
+      'div'
+    );
+
+
+  box.className =
+    'art-box';
+
+
+  element.appendChild(
+    box
+  );
+
+
+  const canvas =
+    document.createElement(
+      'canvas'
+    );
+
+
+  canvas.className =
+    'art-canvas';
+
+
+  box.appendChild(
+    canvas
+  );
+
+
+  let touchDot =
+    null;
+
+
+  if (dot) {
+
+    touchDot =
+      document.createElement(
+        'div'
+      );
+
+
+    touchDot.className =
+      'touch-dot';
+
+
+    touchDot.innerHTML = `
+
+      <i class="halo"></i>
+
+      <i class="wave"></i>
+
+      <i class="wave w2"></i>
+
+      <i class="ring"></i>
+
+      <i class="core"></i>
+
+    `;
+
+
+    box.appendChild(
+      touchDot
+    );
+  }
+
+
+  const state = {
+
+    el:
+      element,
+
+    box,
+
+    cv:
+      canvas,
+
+    ctx:
+      canvas.getContext(
+        '2d'
+      ),
+
+    off:
+      document.createElement(
+        'canvas'
+      ),
+
+    layers,
+
+    td:
+      touchDot,
+
+    v:
+      [0,0,0,0],
+
+    heat:
+      0,
+
+    heatT:
+      0,
+
+    g:
+      null
+
+  };
+
+
+  element._S =
+    state;
+
+
+  layout(
+    state
+  );
+
+
+  return state;
+}
+
+
+// ============================================================
+// LAYOUT
+// ============================================================
+
+function layout(
+  state
+) {
+
+  const rect =
+    state.el
+      .getBoundingClientRect();
+
+
+  if (
+    !rect.width
+    ||
+    !rect.height
+  ) {
+
+    return;
+  }
+
+
+  const plate =
+    state.el.dataset.mode
+    ===
+    'plate';
+
+
+  const available =
+    Math.min(
+      rect.width,
+      rect.height
+    )
+    *
+    0.94;
+
+
+  let size;
+  let bw;
+  let bh;
+  let ox;
+  let oy;
+
+
+  if (plate) {
+
+    size =
+      available;
+
+    bw =
+      size;
+
+    bh =
+      size;
+
+    ox =
+      0;
+
+    oy =
+      0;
+
+  } else {
+
+    size =
+      available
+      /
+      (
+        Math.max(
+          BW,
+          BH
+        )
+        /
+        SRC
+      );
+
+
+    bw =
+      BW
+      /
+      SRC
+      *
+      size;
+
+
+    bh =
+      BH
+      /
+      SRC
+      *
+      size;
+
+
+    ox =
+      -BX
+      /
+      SRC
+      *
+      size;
+
+
+    oy =
+      -BY
+      /
+      SRC
+      *
+      size;
+  }
+
+
+  const dpr =
+    Math.min(
+      2,
+      window.devicePixelRatio
+      ||
+      1
+    );
+
+
+  state.box.style.width =
+    bw + 'px';
+
+
+  state.box.style.height =
+    bh + 'px';
+
+
+  state.W =
+    plate
+      ?
+      size
+      :
+      BW / SRC * size;
+
+
+  state.g = {
+
+    plate,
+
+    size,
+
+    bw,
+
+    bh,
+
+    ox,
+
+    oy,
+
+    dpr,
+
+    cx:
+      ox
+      +
+      ORIGIN.x
+      /
+      SRC
+      *
+      size,
+
+    cy:
+      oy
+      +
+      ORIGIN.y
+      /
+      SRC
+      *
+      size
+
+  };
+
+
+  state.cv.width =
+    Math.round(
+      bw * dpr
+    );
+
+
+  state.cv.height =
+    Math.round(
+      bh * dpr
+    );
+
+
+  state.off.width =
+    Math.round(
+      bw * dpr
+    );
+
+
+  state.off.height =
+    Math.round(
+      bh * dpr
+    );
+
+
+  state.cv.style.width =
+    bw + 'px';
+
+
+  state.cv.style.height =
+    bh + 'px';
+
+
+  if (
+    state.td
+  ) {
+
+    state.td.style.left =
+      state.g.cx
+      +
+      'px';
+
+
+    state.td.style.top =
+      state.g.cy
+      +
+      'px';
+  }
+
+
+  draw(
+    state
+  );
+}
+
+
+// ============================================================
+// SHAPE
+// ============================================================
+
+function shapePath(
+  context,
+  geometry
+) {
+
+  context.beginPath();
+
+
+  if (
+    geometry.plate
+  ) {
+
+    context.arc(
+
+      geometry.ox
+      +
+      geometry.size
+      /
+      2,
+
+      geometry.oy
+      +
+      geometry.size
+      /
+      2,
+
+      geometry.size
+      *
+      0.496,
+
+      0,
+
+      Math.PI * 2
+
+    );
+
+  } else {
+
+    POLY.forEach(
+      (
+        point,
+        index
+      ) => {
+
+        const x =
+          geometry.ox
+          +
+          point[0]
+          /
+          SRC
+          *
+          geometry.size;
+
+
+        const y =
+          geometry.oy
+          +
+          point[1]
+          /
+          SRC
+          *
+          geometry.size;
+
+
+        if (index) {
+
+          context.lineTo(
+            x,
+            y
+          );
+
+        } else {
+
+          context.moveTo(
+            x,
+            y
+          );
+        }
+      }
+    );
+  }
+
+
+  context.closePath();
+}
+
+
+// ============================================================
+// IMAGE READY
+// ============================================================
+
+function ready(
+  key
+) {
+
+  const image =
+    IMGS[key];
+
+
+  return (
+
+    image
+
+    &&
+
+    image.complete
+
+    &&
+
+    image.naturalWidth
+    >
+    0
+
+  );
+}
+
+
+// ============================================================
+// DRAW PORCELAIN
+// ============================================================
+
+function draw(
+  state
+) {
+
+  const geometry =
+    state.g;
+
+
+  if (
+    !geometry
+  ) {
+
+    return;
+  }
+
+
+  const context =
+    state.ctx;
+
+
+  const offContext =
+    state.off
+      .getContext(
+        '2d'
+      );
+
+
+  context.setTransform(
+
+    geometry.dpr,
+    0,
+    0,
+    geometry.dpr,
+    0,
+    0
+
+  );
+
+
+  context.globalAlpha =
+    1;
+
+
+  context.globalCompositeOperation =
+    'source-over';
+
+
+  context.clearRect(
+
+    0,
+    0,
+
+    geometry.bw,
+    geometry.bh
+
+  );
+
+
+  const base =
+    state.layers[0];
+
+
+  if (
+    !ready(
+      base
+    )
+  ) {
+
+    return;
+  }
+
+
+  context.save();
+
+
+  shapePath(
+
+    context,
+    geometry
+
+  );
+
+
+  context.clip();
+
+
+  context.drawImage(
+
+    IMGS[base],
+
+    geometry.ox,
+    geometry.oy,
+
+    geometry.size,
+    geometry.size
+
+  );
+
+
+  const amounts = {
+
+    under:
+      [
+        state.v[0],
+        1
+      ],
+
+    ideal:
+      [
+        state.v[1],
+        state.v[2]
+      ],
+
+    over:
+      [
+        state.v[3],
+        1
+      ]
+
+  };
+
+
+  for (
+    const key
+    of
+    state.layers.slice(1)
+  ) {
+
+    const pair =
+      amounts[key]
+      ||
+      [0,0];
+
+
+    const fraction =
+      pair[0];
+
+
+    const opacity =
+      pair[1];
+
+
+    if (
+      fraction <= 0.001
+      ||
+      !ready(key)
+    ) {
+
+      continue;
+    }
+
+
+    const radius =
+      fraction
+      *
+      state.W;
+
+
+    offContext.setTransform(
+
+      geometry.dpr,
+      0,
+      0,
+      geometry.dpr,
+      0,
+      0
+
+    );
+
+
+    offContext.clearRect(
+
+      0,
+      0,
+
+      geometry.bw,
+      geometry.bh
+
+    );
+
+
+    offContext.globalCompositeOperation =
+      'source-over';
+
+
+    offContext.drawImage(
+
+      IMGS[key],
+
+      geometry.ox,
+      geometry.oy,
+
+      geometry.size,
+      geometry.size
+
+    );
+
+
+    const gradient =
+      offContext
+        .createRadialGradient(
+
+          geometry.cx,
+          geometry.cy,
+          0,
+
+          geometry.cx,
+          geometry.cy,
+          radius
+
+        );
+
+
+    gradient.addColorStop(
+      0,
+      '#000'
+    );
+
+
+    gradient.addColorStop(
+      .6,
+      '#000'
+    );
+
+
+    gradient.addColorStop(
+      1,
+      'rgba(0,0,0,0)'
+    );
+
+
+    offContext.globalCompositeOperation =
+      'destination-in';
+
+
+    offContext.fillStyle =
+      gradient;
+
+
+    offContext.fillRect(
+
+      0,
+      0,
+
+      geometry.bw,
+      geometry.bh
+
+    );
+
+
+    context.globalAlpha =
+      Math.min(
+        1,
+        opacity
+      );
+
+
+    context.setTransform(
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    );
+
+
+    context.drawImage(
+
+      state.off,
+
+      0,
+      0
+
+    );
+
+
+    context.setTransform(
+
+      geometry.dpr,
+      0,
+      0,
+      geometry.dpr,
+      0,
+      0
+
+    );
+
+
+    context.globalAlpha =
+      1;
+  }
+
+
+  if (
+    state.heat
+    >
+    0.002
+  ) {
+
+    const radius =
+      state.W
+      *
+      .25;
+
+
+    const gradient =
+      context
+        .createRadialGradient(
+
+          geometry.cx,
+          geometry.cy,
+          0,
+
+          geometry.cx,
+          geometry.cy,
+          radius
+
+        );
+
+
+    gradient.addColorStop(
+
+      0,
+
+      `rgba(
+        233,
+        180,
+        138,
+        ${0.55 * state.heat}
+      )`
+
+    );
+
+
+    gradient.addColorStop(
+
+      1,
+
+      'rgba(233,180,138,0)'
+
+    );
+
+
+    context.globalCompositeOperation =
+      'screen';
+
+
+    context.fillStyle =
+      gradient;
+
+
+    context.fillRect(
+
+      geometry.cx
+      -
+      radius,
+
+      geometry.cy
+      -
+      radius,
+
+      radius * 2,
+
+      radius * 2
+
+    );
+
+
+    context.globalCompositeOperation =
+      'source-over';
+  }
+
+
+  context.restore();
+}
+
+
+// ============================================================
+// COLOR TRANSITION
+// ============================================================
+
+function paint(
+  state,
+  stage
+) {
+
+  const index =
+    Math.min(
+      7,
+      Math.floor(
+        stage
+      )
+    );
+
+
+  const t =
+    stage
+    -
+    index;
+
+
+  const a =
+    TBL[index];
+
+
+  const b =
+    TBL[index + 1];
+
+
+  state.v =
+    a.map(
+      (
+        value,
+        i
+      ) =>
+        value
+        +
+        (
+          b[i]
+          -
+          value
+        )
+        *
+        t
+    );
+
+
+  draw(
+    state
+  );
+}
+
+
+// ============================================================
+// HEAT VISUAL
+// ============================================================
+
+function setHeat(
+  state,
+  on
+) {
+
+  state.heatT =
+    on
+      ?
+      1
+      :
+      0;
+}
+
+
+function stepHeat(
+  state,
+  dt
+) {
+
+  if (
+    state.heat
+    ===
+    state.heatT
+  ) {
+
+    return;
+  }
+
+
+  const delta =
+    dt
+    /
+    .35;
+
+
+  if (
+    state.heatT
+    >
+    state.heat
+  ) {
+
+    state.heat =
+      Math.min(
+        state.heatT,
+        state.heat
+        +
+        delta
+      );
+
+  } else {
+
+    state.heat =
+      Math.max(
+        state.heatT,
+        state.heat
+        -
+        delta
+      );
+  }
+
+
+  draw(
+    state
+  );
+}
+
+
+// ============================================================
+// ESP32 BRIDGE
+// ============================================================
+
+function post(
+  message
+) {
+
+
+  if (
+    message.t
+    ===
+    'hold'
+  ) {
+
+    const path =
+
+      (
+        message.on
+        ?
+        '/start?t='
+        :
+        '/stop?t='
+      )
+
+      +
+
+      encodeURIComponent(
+        message.temp
+      );
+
+
+    fetch(
+      path,
+      {
+        cache:
+          'no-store'
+      }
+    )
+    .catch(
+      () => {}
+    );
+  }
+
+
+  else if (
+    message.t
+    ===
+    'temp'
+  ) {
+
+    fetch(
+
+      '/kiln?t='
+
+      +
+
+      encodeURIComponent(
+        message.temp
+      ),
+
+      {
+        cache:
+          'no-store'
+      }
+
+    )
+    .catch(
+      () => {}
+    );
+  }
+
+
+  else if (
+    message.t
+    ===
+    'reset'
+  ) {
+
+    fetch(
+      '/reset',
+      {
+        cache:
+          'no-store'
+      }
+    )
+    .catch(
+      () => {}
+    );
+  }
+
+
+  else if (
+    message.t
+    ===
+    'ready'
+  ) {
+
+    fetch(
+      '/status',
+      {
+        cache:
+          'no-store'
+      }
+    )
+    .catch(
+      () => {}
+    );
+  }
+}
+
+
+// ============================================================
+// SOUND LAYER
+// Added from the software-team update.
+// Does not change ESP32 endpoints, firing timing, vibration,
+// PID, hold/release, or temperature logic.
+// ============================================================
+
+const SND=(()=>{
+  let ctx=null,master,music,sfx,vox,verb,brown,white,on=true,playing=false,timer=null,nextBar=0,bar=0,fireN=null,crackT=0,ducked=false,vduck=false;
+  try{on=localStorage.getItem('biwb-sound')!=='off'}catch(_){}
+  const MUSIC=.42,SFX=.8,mtof=m=>440*Math.pow(2,(m-69)/12);
+  function noise(br){const n=ctx.sampleRate*2,b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0);let l=0;
+    for(let i=0;i<n;i++){const w=Math.random()*2-1;if(br){l=(l+.02*w)/1.02;d[i]=l*3.5}else d[i]=w}return b}
+  function impulse(sec,dec){const r=ctx.sampleRate,n=Math.floor(r*sec),b=ctx.createBuffer(2,n,r);
+    for(let c=0;c<2;c++){const d=b.getChannelData(c);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,dec)}return b}
+  function iosUnmute(){ // lets sound play with the iPhone/iPad silent switch on
+    try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(_){}
+    try{const n=4410,buf=new ArrayBuffer(44+n*2),v=new DataView(buf),w=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i))};
+      w(0,'RIFF');v.setUint32(4,36+n*2,true);w(8,'WAVEfmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,44100,true);v.setUint32(28,88200,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*2,true);
+      const a=new Audio(URL.createObjectURL(new Blob([buf],{type:'audio/wav'})));a.loop=true;a.setAttribute('playsinline','');a.volume=.01;a.play().catch(()=>{})}catch(_){}}
+  function init(){
+    if(ctx)return true;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return false;
+    ctx=new AC();iosUnmute();
+    const comp=ctx.createDynamicsCompressor();comp.threshold.value=-16;comp.ratio.value=3;comp.connect(ctx.destination);
+    master=ctx.createGain();master.gain.value=on?1:0;master.connect(comp);
+    verb=ctx.createConvolver();verb.buffer=impulse(2.6,2.4);const vg=ctx.createGain();vg.gain.value=.3;verb.connect(vg);vg.connect(master);
+    music=ctx.createGain();music.gain.value=MUSIC;music.connect(master);
+    sfx=ctx.createGain();sfx.gain.value=SFX;sfx.connect(master);
+    vox=ctx.createGain();vox.gain.value=.7;vox.connect(master);loadVoice();
+    brown=noise(true);white=noise(false);return true}
+  const out=(bus,wet)=>{const g=ctx.createGain();g.connect(bus);if(wet){const w=ctx.createGain();w.gain.value=wet;g.connect(w);w.connect(verb)}return g};
+  const env=(g,t,pk,a,d)=>{g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(pk,t+a);g.gain.exponentialRampToValueAtTime(.0001,t+d)};
+  function tone(f,t,{type='sine',gain=.1,att=.005,dur=1,wet=.3,cut=0,bus}={}){const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=f;let n=o;
+    if(cut){const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=cut;o.connect(lp);n=lp}
+    env(g,t,gain,att,dur);n.connect(g);g.connect(out(bus||sfx,wet));o.start(t);o.stop(t+dur+.05)}
+  function bell(f,t,{gain=.16,dur=2.4,wet=.5,dull=false}={}){const o=out(sfx,wet);
+    for(const [r,a] of dull?[[1,1],[2,.25]]:[[1,1],[2.76,.32],[5.4,.12],[8.93,.04]]){const x=ctx.createOscillator(),g=ctx.createGain();x.frequency.value=f*r;env(g,t,gain*a,.004,dur/(1+r*.3));x.connect(g);g.connect(o);x.start(t);x.stop(t+dur+.1)}}
+  function pluck(f,t,{gain=.09,dur=1}={}){const o=out(music,.6),a=ctx.createOscillator(),b=ctx.createOscillator(),lp=ctx.createBiquadFilter(),g=ctx.createGain(),h=ctx.createGain();
+    a.type='triangle';a.frequency.setValueAtTime(f*1.025,t);a.frequency.exponentialRampToValueAtTime(f,t+.14);b.frequency.value=f*2;h.gain.value=.22;
+    lp.type='lowpass';lp.frequency.setValueAtTime(2600,t);lp.frequency.exponentialRampToValueAtTime(500,t+dur);env(g,t,gain,.008,dur);
+    a.connect(lp);b.connect(h);h.connect(lp);lp.connect(g);g.connect(o);a.start(t);b.start(t);a.stop(t+dur);b.stop(t+dur)}
+  function swish(t,{from=300,to=1400,dur=.5,gain=.2,q=1.2,rise=false}={}){const s_=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();s_.buffer=white;
+    f.type='bandpass';f.Q.value=q;f.frequency.setValueAtTime(from,t);f.frequency.exponentialRampToValueAtTime(to,t+dur);
+    if(rise){g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(gain,t+dur*.9);g.gain.linearRampToValueAtTime(.0001,t+dur)}else env(g,t,gain,dur*.25,dur);
+    s_.connect(f);f.connect(g);g.connect(out(sfx,.25));s_.start(t,Math.random());s_.stop(t+dur+.05)}
+  function crackle(t,x){const s_=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain(),d=.012+Math.random()*.03;s_.buffer=white;
+    f.type='highpass';f.frequency.value=1800+Math.random()*2500;env(g,t,(.03+Math.random()*.09)*(.4+x),.001,d);s_.connect(f);f.connect(g);
+    if(ctx.createStereoPanner){const p=ctx.createStereoPanner();p.pan.value=Math.random()*1.4-.7;g.connect(p);p.connect(sfx)}else g.connect(sfx);
+    s_.start(t,Math.random()*1.5);s_.stop(t+d+.02)}
+  const FX={
+    tap:t=>bell(2637,t,{gain:.07,dur:.35,wet:.15}),
+    next:t=>{bell(mtof(81),t,{gain:.09,dur:1.4});bell(mtof(86),t+.11,{gain:.1,dur:1.8})},
+    card:t=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(1100,t);o.frequency.exponentialRampToValueAtTime(620,t+.05);env(g,t,.17,.002,.1);o.connect(g);g.connect(out(sfx,.15));o.start(t);o.stop(t+.12)},
+    reset:t=>{swish(t,{from:500,to:1600,dur:.38,gain:.16,rise:true});bell(2637,t+.38,{gain:.06,dur:.4,wet:.2})},
+    ignite:t=>{swish(t,{from:250,to:1300,dur:.55,gain:.22});const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(90,t);o.frequency.exponentialRampToValueAtTime(48,t+.3);env(g,t,.25,.01,.35);o.connect(g);g.connect(sfx);o.start(t);o.stop(t+.4)},
+    cool:t=>swish(t,{from:900,to:260,dur:.8,gain:.12,q:.8}),
+    half:t=>bell(mtof(81),t,{gain:.08,dur:2}),
+    ideal:t=>[74,78,81,86].forEach((m,i)=>bell(mtof(m),t+i*.09,{gain:.12,dur:3.2})),
+    over:t=>{const o=out(sfx,.3);for(const f of [196,203]){const a=ctx.createOscillator(),g=ctx.createGain(),lp=ctx.createBiquadFilter();a.type='sawtooth';lp.type='lowpass';lp.frequency.value=700;
+      a.frequency.setValueAtTime(f,t);a.frequency.exponentialRampToValueAtTime(f*.78,t+.9);env(g,t,.07,.03,1.1);a.connect(lp);lp.connect(g);g.connect(o);a.start(t);a.stop(t+1.2)}
+      bell(mtof(62),t,{gain:.12,dur:1.2,dull:true,wet:.2})},
+    complete:t=>[74,76,78,81,83,86].forEach((m,i)=>bell(mtof(m),t+i*.1,{gain:.09,dur:2.4})),
+  };
+  /* "Workshop": rolling plucked pattern, soft bass, shaker and pad. D – Bm – G – A, 96 bpm */
+  const PROG=[{r:50,c:[62,66,69,74]},{r:47,c:[59,62,66,71]},{r:43,c:[59,62,67,71]},{r:45,c:[61,64,69,73]}],ORD=[0,2,1,3,0,2,1,2],S16=60/96/4;
+  function shaker(t,v){const s_=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();s_.buffer=white;f.type='highpass';f.frequency.value=6500;env(g,t,.035*v,.004,.05);s_.connect(f);f.connect(g);g.connect(music);s_.start(t,Math.random());s_.stop(t+.07)}
+  function padChord(notes,t,d){for(const m of notes)for(const det of [-6,6]){const o=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain();o.type='sawtooth';o.frequency.value=mtof(m);o.detune.value=det;
+    f.type='lowpass';f.frequency.value=1400;g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.0084,t+.6);g.gain.setValueAtTime(.0084,t+d-.5);g.gain.linearRampToValueAtTime(.0001,t+d);
+    o.connect(f);f.connect(g);g.connect(out(music,.4));o.start(t);o.stop(t+d+.05)}}
+  function workshopBar(i,t){const ch=PROG[i%4];
+    for(let k=0;k<8;k++)pluck(mtof(ch.c[ORD[k]]+(k%4===3?12:0)),t+k*2*S16,{gain:.09*(k%2?.75:1),dur:.9});
+    tone(mtof(ch.r),t,{type:'triangle',gain:.16,dur:.7,wet:.05,cut:500,bus:music});tone(mtof(ch.r+7),t+10*S16,{type:'triangle',gain:.11,dur:.4,wet:.05,cut:500,bus:music});
+    for(let k=0;k<8;k++)shaker(t+(k*2+1)*S16,k%2?.7:1);padChord(ch.c.slice(0,3),t,16*S16)}
+  function sched(){while(nextBar<ctx.currentTime+.6){workshopBar(bar++,nextBar);nextBar+=16*S16}}
+  function musicStart(){if(playing||!on||!ctx)return;playing=true;music.gain.cancelScheduledValues(ctx.currentTime);music.gain.setValueAtTime(.0001,ctx.currentTime);
+    music.gain.linearRampToValueAtTime(MUSIC*(vduck?.3:ducked?.45:1),ctx.currentTime+1.5);nextBar=ctx.currentTime+.1;sched();timer=setInterval(sched,150)}
+  function musicStop(){if(!playing)return;playing=false;clearInterval(timer);const old=music,t=ctx.currentTime;old.gain.cancelScheduledValues(t);old.gain.setValueAtTime(old.gain.value,t);
+    old.gain.linearRampToValueAtTime(.0001,t+.3);setTimeout(()=>old.disconnect(),450);music=ctx.createGain();music.gain.value=MUSIC;music.connect(master)}
+  function applyDuck(){if(!ctx)return;const t=ctx.currentTime;if(playing)music.gain.setTargetAtTime(MUSIC*(vduck?.3:ducked?.45:1),t,.2);sfx.gain.setTargetAtTime(SFX*(vduck?.7:1),t,.15)}
+  function duck(d){ducked=d;applyDuck()}
+  /* recorded voice guidance (assets/voice/*.mp3) */
+  const VOICE=['start','again','under','under2','ideal','over','complete','reveal','takeaway','explore'],vbuf={};let vsrc=null,pend=null,queued=null;
+  function decode(b){return new Promise((res,rej)=>{const p=ctx.decodeAudioData(b,res,rej);if(p&&p.then)p.then(res,rej)})}
+  function loadVoice(){for(const k of VOICE)fetch('assets/voice/'+k+'.mp3').then(r=>r.arrayBuffer()).then(decode).then(buf=>{vbuf[k]=buf;flush()}).catch(()=>{})}
+  function flush(){if(pend&&performance.now()-pend.t<2500){const k=pend.k,d=pend.d;if(vbuf[k]&&ctx.state==='running'){pend=null;say(k,d)}}}
+  function stopVoice(){pend=null;queued=null;if(vsrc){const s_=vsrc;vsrc=null;try{s_.stop()}catch(_){}vduck=false;applyDuck()}}
+  function say(k,delay=0,{after=false,when=null}={}){if(!on||!ctx)return;
+    if(after&&vsrc){queued={k,delay,when};return}queued=null;
+    if(!vbuf[k]||ctx.state!=='running'){pend={k,d:delay,t:performance.now()};return}pend=null;
+    if(vsrc){const old=vsrc;vsrc=null;try{old.stop()}catch(_){}}
+    const s_=ctx.createBufferSource();s_.buffer=vbuf[k];s_.connect(vox);vsrc=s_;vduck=true;applyDuck();
+    s_.onended=()=>{if(vsrc===s_){vsrc=null;vduck=false;applyDuck();
+      if(queued){const q=queued;queued=null;if(!q.when||q.when())say(q.k,.25)}}};s_.start(ctx.currentTime+.05+delay)}
+  const ready=()=>on&&ctx&&ctx.state==='running';
+  return{
+    unlock(){if(!on)return;if(!init())return;if(ctx.state!=='running')ctx.resume().then(()=>{musicStart();flush()}).catch(()=>{});else musicStart()},
+    say,stopVoice,
+    play(k){if(ready()&&FX[k])FX[k](ctx.currentTime+.01)},
+    fireOn(){if(!ready()||fireN)return;const s_=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain(),t=ctx.currentTime;
+      s_.buffer=brown;s_.loop=true;f.type='lowpass';f.frequency.value=240;f.Q.value=.6;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.22,t+.45);
+      s_.connect(f);f.connect(g);g.connect(sfx);s_.start(t);fireN={s_,f,g};duck(true)},
+    fireLevel(x){if(!fireN||!ctx)return;const t=ctx.currentTime;fireN.f.frequency.setTargetAtTime(240+1500*x*x,t,.15);fireN.g.gain.setTargetAtTime(.22+.21*x,t,.25);
+      if(t>crackT){crackle(t+.01,x);crackT=t+(.35-.3*x)*(.5+Math.random())}},
+    fireOff(){if(!fireN)return;const {s_,f,g}=fireN,t=ctx.currentTime;fireN=null;g.gain.cancelScheduledValues(t);g.gain.setValueAtTime(Math.max(.0001,g.gain.value),t);
+      g.gain.exponentialRampToValueAtTime(.0001,t+.8);f.frequency.setTargetAtTime(160,t,.25);s_.stop(t+.9);duck(false)},
+    isOn:()=>on,
+    setOn(v){on=v;try{localStorage.setItem('biwb-sound',v?'on':'off')}catch(_){}
+      if(v){this.unlock();if(ctx){master.gain.setTargetAtTime(1,ctx.currentTime,.05)}}
+      else if(ctx){this.fireOff();stopVoice();musicStop();master.gain.setTargetAtTime(0,ctx.currentTime,.05)}},
+    pause(){if(ctx&&ctx.state==='running')ctx.suspend()},
+    resume(){if(ctx&&on&&ctx.state==='suspended')ctx.resume()},
+  };
+})();
+
+const firedMarks = {};
+let voiceAgain = false;
+
+
+// ============================================================
+// FIRING ENGINE
+// ============================================================
+
+const fire = {
+
+  p:
+    0,
+
+  hold:
+    false,
+
+  last:
+    0,
+
+  vib1200:
+    false,
+
+  vib1300:
+    false
+
+};
+
+
+let lastBeat =
+  0;
+
+
+const tempAt =
+  p => {
+
+    const scaled =
+      p * 8;
+
+
+    const index =
+      Math.min(
+        7,
+        Math.floor(
+          scaled
+        )
+      );
+
+
+    const t =
+      scaled
+      -
+      index;
+
+
+    return (
+
+      TEMPS[index]
+
+      +
+
+      (
+        TEMPS[index + 1]
+        -
+        TEMPS[index]
+      )
+
+      *
+      t
+
+    );
+  };
+
+
+function stateOf(
+  temperature
+) {
+
+  if (
+    fire.p
+    <=
+    0
+  ) {
+
+    return 'ready';
+  }
+
+
+  if (
+    temperature
+    <
+    WIN[0]
+  ) {
+
+    return 'under';
+  }
+
+
+  if (
+    temperature
+    <=
+    WIN[1]
+  ) {
+
+    return 'ideal';
+  }
+
+
+  return 'over';
+}
+
+
+// ============================================================
+// UI COPY
+// ============================================================
+
+const COPY = {
+
+  ready: {
+
+    chip:
+      'Ready to begin',
+
+    guide:
+      'Press and hold the porcelain to fire',
+
+    wear:
+      'Unfired cobalt',
+
+    bars:
+      0
+  },
+
+
+  under: {
+
+    chip:
+      'Underfired',
+
+    guide:
+      'Keep holding to heat it more',
+
+    wear:
+      'Dull, greyish blue',
+
+    bars:
+      1
+  },
+
+
+  ideal: {
+
+    chip:
+      'Ideal Firing',
+
+    guide:
+      'Vivid blue now! You can stop here',
+
+    wear:
+      'Vivid, bright blue',
+
+    bars:
+      2
+  },
+
+
+  over: {
+
+    chip:
+      'Overfired',
+
+    guide:
+      'Too hot, the blue begins to fade',
+
+    wear:
+      'Muted, purplish blue',
+
+    bars:
+      3
+  }
+
+};
+
+
+// ============================================================
+// STAGES
+// ============================================================
+
+let FS;
+
+let DS;
+
+let lastState =
+  null;
+
+
+// ============================================================
+// HOLD
+// ============================================================
+
+function setHold(
+  on
+) {
+
+  if (
+    on
+    ===
+    fire.hold
+  ) {
+
+    return;
+  }
+
+
+  fire.hold =
+    on;
+
+
+  post({
+
+    t:
+      'hold',
+
+    on,
+
+    temp:
+      Math.round(
+        tempAt(
+          fire.p
+        )
+      )
+
+  });
+
+
+  // Sound only. Hardware behavior above is unchanged.
+  if (on) {
+
+    SND.play(
+      'ignite'
+    );
+
+    SND.fireOn();
+
+  } else {
+
+    SND.fireOff();
+
+    SND.play(
+      'cool'
+    );
+  }
+
+
+  setHeat(
+    FS,
+    on
+  );
+
+
+  renderFeedback();
+}
+
+
+// ============================================================
+// ANIMATION
+// ============================================================
+
+function tick(
+  timestamp
+) {
+
+  const dt =
+
+    fire.last
+
+      ?
+
+      Math.min(
+
+        .1,
+
+        (
+          timestamp
+          -
+          fire.last
+        )
+        /
+        1000
+
+      )
+
+      :
+
+      0;
+
+
+  fire.last =
+    timestamp;
+
+
+  if (
+    fire.hold
+    &&
+    fire.p
+    <
+    1
+  ) {
+
+    fire.p =
+
+      Math.min(
+
+        1,
+
+        fire.p
+        +
+        dt
+        /
+        FIRE_SECONDS
+
+      );
+  }
+
+
+  const temperature =
+
+    Math.round(
+
+      tempAt(
+        fire.p
+      )
+
+    );
+
+
+  // ========================================================
+  // SOUND FEEDBACK ONLY
+  // ========================================================
+
+  if (
+    fire.hold
+  ) {
+
+    SND.fireLevel(
+      (temperature - 25) / 1375
+    );
+
+
+    if (
+      temperature >= 800
+      &&
+      !firedMarks.half
+    ) {
+
+      firedMarks.half = true;
+
+      // Clear 800 C checkpoint feedback:
+      // audible cue + voice guidance, without changing hardware logic.
+      SND.play(
+        'half'
+      );
+
+      SND.say(
+        'under2',
+        .15
+      );
+    }
+
+
+    const soundState =
+      stateOf(
+        temperature
+      );
+
+
+    if (
+      soundState === 'ideal'
+      &&
+      !firedMarks.ideal
+    ) {
+
+      firedMarks.ideal = true;
+
+      SND.play(
+        'ideal'
+      );
+    }
+
+
+    if (
+      soundState === 'over'
+      &&
+      !firedMarks.over
+    ) {
+
+      firedMarks.over = true;
+
+      SND.play(
+        'over'
+      );
+    }
+  }
+
+
+  // ========================================================
+  // 1200 C -> single vibration
+  // ========================================================
+
+  if (
+
+    !fire.vib1200
+
+    &&
+
+    temperature >= 1200
+
+  ) {
+
+    fire.vib1200 =
+      true;
+
+
+    console.log(
+      '1200 -> VIB1'
+    );
+
+
+    fetch(
+
+      '/vib1',
+
+      {
+        cache:
+          'no-store'
+      }
+
+    )
+    .catch(
+      () => {}
+    );
+  }
+
+
+  // ========================================================
+  // 1300 C -> double vibration
+  // ========================================================
+
+  if (
+
+    !fire.vib1300
+
+    &&
+
+    temperature >= 1300
+
+  ) {
+
+    fire.vib1300 =
+      true;
+
+
+    console.log(
+      '1300 -> VIB2'
+    );
+
+
+    fetch(
+
+      '/vib2',
+
+      {
+        cache:
+          'no-store'
+      }
+
+    )
+    .catch(
+      () => {}
+    );
+  }
+
+
+  stepHeat(
+    FS,
+    dt
+  );
+
+
+  // kiln temp debug/status
+  if (
+
+    fire.hold
+
+    &&
+
+    timestamp
+    -
+    lastBeat
+    >
+    500
+
+  ) {
+
+    lastBeat =
+      timestamp;
+
+
+    post({
+
+      t:
+        'temp',
+
+      temp:
+        temperature
+
+    });
+  }
+
+
+  if (
+    !$('#s-firing').hidden
+  ) {
+
+    render();
+  }
+
+
+  requestAnimationFrame(
+    tick
+  );
+}
+
+
+// ============================================================
+// RENDER UI
+// ============================================================
+
+function render() {
+
+  const temperature =
+    tempAt(
+      fire.p
+    );
+
+
+  const state =
+    stateOf(
+      temperature
+    );
+
+
+  paint(
+
+    FS,
+
+    fire.p
+    *
+    8
+
+  );
+
+
+  if (
+    FS.td
+  ) {
+
+    FS.td.style.opacity =
+
+      fire.p > 0
+
+        ?
+
+        0
+
+        :
+
+        1;
+  }
+
+
+  $('#tempNum').textContent =
+
+    Math.round(
+      temperature
+    );
+
+
+  const fraction =
+
+    (
+      temperature
+      -
+      25
+    )
+
+    /
+
+    1375;
+
+
+  const thermometer =
+    $('#thermo');
+
+
+  thermometer
+    .style
+    .setProperty(
+
+      '--fillw',
+
+      `${fraction * 100}%`
+
+    );
+
+
+  thermometer
+    .style
+    .setProperty(
+
+      '--fillh',
+
+      `calc(
+        ${fraction}
+        *
+        (100% - 20px)
+      )`
+
+    );
+
+
+  $('#marker')
+    .style
+    .opacity =
+
+      fire.p > 0
+
+        ?
+
+        1
+
+        :
+
+        0;
+
+
+  if (
+    state
+    !==
+    lastState
+  ) {
+
+    const copy =
+      COPY[state];
+
+
+    $('#status')
+      .dataset
+      .s =
+        state;
+
+
+    $('#statusTxt')
+      .textContent =
+        copy.chip;
+
+
+    $('#guidance')
+      .textContent =
+        copy.guide;
+
+
+    $('#wearV')
+      .textContent =
+        copy.wear;
+
+
+    [
+      ...$('#bars').children
+    ]
+    .forEach(
+      (
+        bar,
+        index
+      ) => {
+
+        bar.classList.toggle(
+
+          'on',
+
+          index
+          <
+          copy.bars
+
+        );
+      }
+    );
+
+
+    // Voice guidance only; UI state logic is unchanged.
+    if (
+      !$('#s-firing').hidden
+    ) {
+
+      if (
+        state === 'ready'
+      ) {
+
+        SND.say(
+          voiceAgain
+            ?
+            'again'
+            :
+            'start'
+        );
+
+        voiceAgain = true;
+
+      } else {
+
+        SND.say(
+          state
+        );
+      }
+    }
+
+
+    lastState =
+      state;
+
+
+    renderFeedback();
+  }
+}
+
+
+// ============================================================
+// FEEDBACK
+// ============================================================
+
+function renderFeedback() {
+
+  const feedback =
+    $('#feedback');
+
+
+  const state =
+    stateOf(
+
+      tempAt(
+        fire.p
+      )
+
+    );
+
+
+  let html =
+    '';
+
+
+  if (
+    !fire.hold
+    &&
+    fire.p > 0
+  ) {
+
+    if (
+      state
+      ===
+      'under'
+    ) {
+
+      html =
+        '<span class="pill">Keep going 💪</span>';
+
+    }
+
+    else if (
+      state
+      ===
+      'ideal'
+    ) {
+
+      html =
+        '<button class="btn primary sm" id="exploreBtn">Explore →</button>';
+
+    }
+
+    else if (
+      state
+      ===
+      'over'
+    ) {
+
+      html =
+        '<span class="pill">Too hot 🥵</span>';
+    }
+  }
+
+
+  feedback.innerHTML =
+    html;
+
+
+  const button =
+    $('#exploreBtn');
+
+
+  if (
+    button
+  ) {
+
+    button.onclick =
+      () =>
+        go(
+          'complete'
+        );
+  }
+}
+
+
+// ============================================================
+// RESET
+// ============================================================
+
+function resetFire() {
+
+  post({
+    t:
+      'reset'
+  });
+
+
+  // Sound state reset only.
+  SND.fireOff();
+
+  for (
+    const key
+    in firedMarks
+  ) {
+
+    delete firedMarks[key];
+  }
+
+
+  fire.p =
+    0;
+
+
+  fire.hold =
+    false;
+
+
+  fire.vib1200 =
+    false;
+
+
+  fire.vib1300 =
+    false;
+
+
+  lastState =
+    null;
+
+
+  setHeat(
+    FS,
+    false
+  );
+
+
+  FS.heat =
+    0;
+
+
+  draw(
+    FS
+  );
+
+
+  render();
+
+  renderFeedback();
+}
+
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+
+const screens = [
+
+  'welcome',
+
+  'firing',
+
+  'complete',
+
+  'reveal',
+
+  'takeaway'
+
+];
+
+
+let current =
+  'welcome';
+
+
+function setView(
+  view
+) {
+
+  $$(
+    '[data-view]'
+  )
+  .forEach(
+    button => {
+
+      button.setAttribute(
+
+        'aria-pressed',
+
+        button.dataset.view
+        ===
+        view
+
+      );
+    }
+  );
+
+
+  for (
+    const state
+    of
+    [FS,DS]
+  ) {
+
+    state.el.dataset.mode =
+      view;
+
+
+    layout(
+      state
+    );
+  }
+
+
+  paint(
+    FS,
+    fire.p * 8
+  );
+
+
+  paint(
+    DS,
+    fire.p * 8
+  );
+}
+
+
+function go(
+  name
+) {
+
+  // Sound only; navigation logic below is unchanged.
+  if (
+    name === 'welcome'
+  ) {
+
+    SND.play(
+      'tap'
+    );
+
+    SND.stopVoice();
+
+  } else if (
+    name === 'complete'
+  ) {
+
+    SND.play(
+      'complete'
+    );
+
+    SND.say(
+      'complete',
+      .6
+    );
+
+  } else if (
+    name === 'reveal'
+  ) {
+
+    SND.play(
+      'next'
+    );
+
+    SND.say(
+      'reveal',
+      .35
+    );
+
+  } else if (
+    name === 'takeaway'
+  ) {
+
+    SND.play(
+      'next'
+    );
+
+    SND.say(
+      'takeaway',
+      .35
+    );
+
+  } else if (
+    name === 'firing'
+  ) {
+
+    SND.play(
+      'next'
+    );
+  }
+
+
+  if (
+    name
+    !==
+    'firing'
+    &&
+    fire.hold
+  ) {
+
+    setHold(
+      false
+    );
+  }
+
+
+  current =
+    name;
+
+
+  for (
+    const screen
+    of
+    screens
+  ) {
+
+    $(
+      '#s-'
+      +
+      screen
+    )
+    .hidden =
+      screen
+      !==
+      name;
+  }
+
+
+  $('#backBtn')
+    .hidden =
+      name
+      ===
+      'welcome'
+      ||
+      name
+      ===
+      'firing';
+
+
+  if (
+    name
+    ===
+    'firing'
+  ) {
+
+    setView(
+      'fragment'
+    );
+
+
+    resetFire();
+  }
+
+
+  if (
+    name
+    ===
+    'reveal'
+  ) {
+
+    document
+      .querySelectorAll(
+        '.card[data-k]'
+      )
+      .forEach(
+        card => {
+
+          card.setAttribute(
+            'aria-pressed',
+            card.dataset.k === 'ideal'
+              ?
+              'true'
+              :
+              'false'
+          );
+        }
+      );
+  }
+
+
+  if (
+    name
+    ===
+    'complete'
+  ) {
+
+    const finalTemp =
+      Math.round(
+        tempAt(
+          fire.p
+        )
+      );
+
+    $('#cTemp').textContent = finalTemp;
+
+    const finalState = stateOf(finalTemp);
+    const resultBox = $('#completeResult');
+    const resultTitle = $('#completeResultTitle');
+    const resultSub = $('#completeResultSub');
+    const resultIcon = $('#completeResultIcon');
+
+    if (resultBox && resultTitle && resultSub && resultIcon) {
+      resultBox.dataset.s = finalState;
+
+      if (finalState === 'ideal') {
+        resultIcon.textContent = '✓';
+        resultTitle.textContent = 'Suitable firing';
+        resultSub.textContent = 'Inside the ≈1300 °C window';
+      } else if (finalState === 'under') {
+        resultIcon.textContent = '•';
+        resultTitle.textContent = 'Underfired';
+        resultSub.textContent = 'Below the suitable firing window';
+      } else {
+        resultIcon.textContent = '!';
+        resultTitle.textContent = 'Overfired';
+        resultSub.textContent = 'Above the suitable firing window';
+      }
+    }
+
+    paint(
+      DS,
+      fire.p * 8
+    );
+  }
+
+
+  requestAnimationFrame(
+    () => {
+
+      $$('.stage')
+        .forEach(
+          element => {
+
+            if (
+              element._S
+            ) {
+
+              layout(
+                element._S
+              );
+            }
+          }
+        );
+    }
+  );
+}
+
+
+// ============================================================
+// BUTTONS
+// ============================================================
+
+document
+  .addEventListener(
+    'click',
+    event => {
+
+      const navigation =
+        event.target
+          .closest(
+            '[data-go]'
+          );
+
+
+      if (
+        navigation
+      ) {
+
+        go(
+          navigation.dataset.go
+        );
+
+        return;
+      }
+
+
+      const card =
+        event.target
+          .closest(
+            '.card[data-k]'
+          );
+
+
+      if (
+        card
+      ) {
+
+        SND.play(
+          'card'
+        );
+
+
+        document
+          .querySelectorAll(
+            '.card[data-k]'
+          )
+          .forEach(
+            item => {
+
+              item.setAttribute(
+                'aria-pressed',
+                item === card
+                  ?
+                  'true'
+                  :
+                  'false'
+              );
+            }
+          );
+
+
+        return;
+      }
+
+
+      const view =
+        event.target
+          .closest(
+            '[data-view]'
+          );
+
+
+      if (
+        view
+      ) {
+
+        setView(
+          view.dataset.view
+        );
+
+        return;
+      }
+    }
+  );
+
+
+$('#home')
+  .onclick =
+    () =>
+      go(
+        'welcome'
+      );
+
+
+$('#backBtn')
+  .onclick =
+    () =>
+      go(
+        'firing'
+      );
+
+
+$('#resetTop')
+  .onclick =
+    () => {
+
+      SND.play(
+        'reset'
+      );
+
+      resetFire();
+    };
+
+
+$('#resetSide')
+  .onclick =
+    () => {
+
+      SND.play(
+        'reset'
+      );
+
+      resetFire();
+    };
+
+
+// ============================================================
+// SOUND BUTTON / AUDIO UNLOCK
+// ============================================================
+
+{
+  const soundButton =
+    $('#soundBtn');
+
+
+  const syncSoundButton =
+    () => {
+
+      const on =
+        SND.isOn();
+
+
+      soundButton.setAttribute(
+        'aria-pressed',
+        String(on)
+      );
+
+
+      soundButton.setAttribute(
+        'aria-label',
+        on
+          ?
+          'Sound on'
+          :
+          'Sound off'
+      );
+    };
+
+
+  syncSoundButton();
+
+
+  soundButton.onclick =
+    () => {
+
+      SND.setOn(
+        !SND.isOn()
+      );
+
+      syncSoundButton();
+
+      SND.play(
+        'tap'
+      );
+    };
+}
+
+
+for (
+  const eventName
+  of
+  [
+    'pointerdown',
+    'touchend',
+    'click',
+    'keydown'
+  ]
+) {
+
+  document.addEventListener(
+    eventName,
+    () =>
+      SND.unlock(),
+    {
+      capture:true,
+      passive:true
+    }
+  );
+}
+
+
+document.addEventListener(
+  'visibilitychange',
+  () => {
+
+    if (
+      document.hidden
+    ) {
+
+      SND.pause();
+
+    } else {
+
+      SND.resume();
+    }
+  }
+);
+
+
+// ============================================================
+// PRESS AND HOLD
+// ============================================================
+
+function bindPress(
+  element
+) {
+
+  const down =
+    event => {
+
+      event.preventDefault();
+
+
+      try {
+
+        element
+          .setPointerCapture(
+            event.pointerId
+          );
+
+      } catch (_) {}
+
+
+      setHold(
+        true
+      );
+    };
+
+
+  const up =
+    () => {
+
+      setHold(
+        false
+      );
+    };
+
+
+  element
+    .addEventListener(
+      'pointerdown',
+      down
+    );
+
+
+  element
+    .addEventListener(
+      'pointerup',
+      up
+    );
+
+
+  element
+    .addEventListener(
+      'pointercancel',
+      up
+    );
+
+
+  element
+    .addEventListener(
+      'lostpointercapture',
+      up
+    );
+
+
+  element
+    .addEventListener(
+      'contextmenu',
+      event =>
+        event.preventDefault()
+    );
+}
+
+
+// ============================================================
+// BOOT
+// ============================================================
+
+const percent =
+  temperature =>
+    (
+      temperature
+      -
+      25
+    )
+    /
+    1375;
+
+
+const thermometer =
+  $('#thermo');
+
+
+thermometer
+  .style
+  .setProperty(
+
+    '--wl',
+
+    `calc(
+      ${percent(WIN[0]) * 100}%
+      -
+      5px
+    )`
+
+  );
+
+
+thermometer
+  .style
+  .setProperty(
+
+    '--ww',
+
+    `calc(
+      ${
+        (
+          percent(WIN[1])
+          -
+          percent(WIN[0])
+        )
+        *
+        100
+      }%
+      +
+      10px
+    )`
+
+  );
+
+
+thermometer
+  .style
+  .setProperty(
+
+    '--hl',
+
+    `${percent(WIN[1]) * 100}%`
+
+  );
+
+
+thermometer
+  .style
+  .setProperty(
+
+    '--wtop',
+
+    `calc(
+      ${
+        1
+        -
+        percent(WIN[1])
+      }
+      *
+      (100% - 20px)
+      +
+      6px
+    )`
+
+  );
+
+
+thermometer
+  .style
+  .setProperty(
+
+    '--wh',
+
+    `calc(
+      ${
+        percent(WIN[1])
+        -
+        percent(WIN[0])
+      }
+      *
+      (100% - 20px)
+      +
+      8px
+    )`
+
+  );
+
+
+thermometer
+  .style
+  .setProperty(
+
+    '--toohot',
+
+    `calc(
+      ${
+        1
+        -
+        percent(WIN[1])
+      }
+      *
+      (100% - 20px)
+    )`
+
+  );
+
+
+// welcome and takeaway stages
+$$(
+  '.stage[data-art]'
+)
+.forEach(
+  element => {
+
+    buildStage(
+
+      element,
+
+      {
+        layers:
+          [
+            element.dataset.art
+          ]
+      }
+
+    );
+  }
+);
+
+
+// firing stage
+FS =
+  buildStage(
+
+    $('#fireStage'),
+
+    {
+
+      layers:
+        [
+          'raw',
+          'under',
+          'ideal',
+          'over'
+        ],
+
+      dot:
+        true
+
+    }
+
+  );
+
+
+// complete stage
+DS =
+  buildStage(
+
+    $('#doneStage'),
+
+    {
+
+      layers:
+        [
+          'raw',
+          'under',
+          'ideal',
+          'over'
+        ]
+
+    }
+
+  );
+
+
+bindPress(
+  $('#fireStage')
+);
+
+
+// Resize redraw
+new ResizeObserver(
+
+  () => {
+
+    $$(
+      '.stage'
+    )
+    .forEach(
+      element => {
+
+        if (
+          element._S
+        ) {
+
+          layout(
+            element._S
+          );
+        }
+      }
+    );
+
+
+    paint(
+      FS,
+      fire.p * 8
+    );
+
+
+    paint(
+      DS,
+      fire.p * 8
+    );
+  }
+
+)
+.observe(
+  document.body
+);
+
+
+render();
+
+
+requestAnimationFrame(
+  tick
+);
+
+
+go(
+  'welcome'
+);
+
+
+post({
+  t:
+    'ready'
+});
+
+
+})();
+
+</script>
+
+
+</body>
+
+</html>
